@@ -1,4 +1,4 @@
-# Check your passwords against [HaveIBeenPownd](https://haveibeenpwned.com/)
+# Check your passwords against [HaveIBeenPwnd](https://haveibeenpwned.com/)
 Ruby script to check if your list of passwords stored in Chrome have been leaked somewhere on the web.
 
 This is a very simple ruby script. 
