@@ -3,6 +3,14 @@ Ruby script to check if your list of passwords stored in Chrome have been leaked
 
 This is a very simple ruby script. 
 
+## Input file format
+
+This is based on how Chrome password export file is, which is a CSV with following columns
+
+```
+   name,url,username,password
+```
+
 ## How to use it?
 1. Export your passwords from Chrome
 2. (The file should be named "Chrome Passwords.csv")
