@@ -25,9 +25,19 @@ def check_pass(site, passplain)
  result 
 end
 
+password_file = if ARGV.empty?
+  "Chrome Passwords.csv"
+else 
+  ARGV[0]
+end
+
+unless File.exists?(password_file)
+  puts "ruby check_password.rb [/path/to/password/csv/file, Default = './Chrome Passwords.csv']"
+  exit
+end
 
 sh = Shell.new
-File.new("Chrome Passwords.csv")
+File.new(password_file)
   .drop(1) # ignore the headers
   .sort
   .uniq
