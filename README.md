@@ -13,10 +13,8 @@ This is based on how Chrome password export file is, which is a CSV with followi
 
 ## How to use it?
 1. Export your passwords from Chrome
-2. (The file should be named "Chrome Passwords.csv")
-3. (Yes, I know. I could be more flexible to accept any file as input ;) )
-4. Put the password file in the same directory as the script
-5. run the script! WARNING: it will print your passwords to the standard output!
+2. Run the script and pass the password file name as the first arguemnt. It defaults to "./Chrome Passwords.csv"
+3. run the script! WARNING: it will print last 5 characters of your passwords to the standard output!
 
 ## License
 MIT

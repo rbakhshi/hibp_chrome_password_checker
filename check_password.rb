@@ -18,7 +18,7 @@ def check_pass(site, passplain)
     leaked_count = @checked[pass] = result[suffix]
   end
   if leaked_count
-    puts "\npassword for #{site} (#{passplain}) found #{leaked_count} times"
+    puts "\npassword for #{site} ****(#{passplain.split(//).last(5).join}) found #{leaked_count} times"
   else
     printf "."
   end
