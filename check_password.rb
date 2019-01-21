@@ -1,21 +1,20 @@
 #!/usr/bin/env ruby
 require "net/http"
-require "shell"
 require "digest"
 
 @checked = {}
 
 def check_pass(site, passplain)
   sha1 = Digest::SHA1.new
-  pass = sha1.update(passplain).to_s
+  password_hash = sha1.update(passplain).to_s
 
-  leaked_count = @checked[pass]
+  leaked_count = @checked[password_hash]
   unless leaked_count
-    uri = uri = URI("https://api.pwnedpasswords.com/range/#{pass[0..4]}")
+    uri = uri = URI("https://api.pwnedpasswords.com/range/#{password_hash[0..4]}")
     res = Net::HTTP.get(uri)
     result = Hash[* res.downcase.tr("\r", "").split(/\:|\n/)]
-    suffix = pass[5..-1]
-    leaked_count = @checked[pass] = result[suffix]
+    suffix = password_hash[5..-1]
+    leaked_count = @checked[password_hash] = result[suffix]
   end
   if leaked_count
     puts "\npassword for #{site} ****(#{passplain.split(//).last(5).join}) found #{leaked_count} times"
@@ -36,7 +35,6 @@ unless File.exists?(password_file)
   exit
 end
 
-sh = Shell.new
 File.new(password_file)
   .drop(1) # ignore the headers
   .sort
